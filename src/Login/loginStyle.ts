@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { ColorMatch } from "../Type/ColorMatch";
+import { ColorMatch } from "../init/ColorMatch";
 
 const styles = StyleSheet.create({
   bgLogin: {

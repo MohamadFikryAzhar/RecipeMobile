@@ -1,12 +1,12 @@
 import { Button, Image, Text, TextInput, View } from "react-native";
-import styles from "./registerPage";
+import styles from "./registerStyle";
 import { RootStackParams } from "../init/RootStackParams";
 import {StackNavigationProp} from '@react-navigation/stack';
 import { Link, useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { ColorMatch } from "../Type/ColorMatch";
+import { ColorMatch } from "../init/ColorMatch";
 
-type authScreenProp = StackNavigationProp<RootStackParams, 'Auth'>
+type authScreenProp = StackNavigationProp<RootStackParams, 'Register'>
 
 export default function RegisterScreen(): JSX.Element {
   const navigation = useNavigation<authScreenProp>();

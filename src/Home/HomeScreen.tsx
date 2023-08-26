@@ -1,20 +1,16 @@
-import { Text, View } from "react-native";
-import styles from "./rootPage";
 import {StackNavigationProp} from '@react-navigation/stack';
 import { useNavigation } from "@react-navigation/native";
-import { HomeStackParams } from "../init/HomeStackParams";
-import BottomTab from "../component/BottomTab";
+import { RootStackParams } from "../init/RootStackParams";
+import { Text, View } from 'react-native';
 
-
-type homeScreenProp = StackNavigationProp<HomeStackParams, 'Main'>
+type homeScreenProp = StackNavigationProp<RootStackParams, 'Main'>
 
 export default function HomeScreen(): JSX.Element {
   const navigation = useNavigation<homeScreenProp>();
 
   return (
     <View>
-      <Text style={styles.fontRootPage}>Mama Recipe</Text>
-      <BottomTab/>      
+      <Text>Home screeen</Text>
     </View>
   )
 }

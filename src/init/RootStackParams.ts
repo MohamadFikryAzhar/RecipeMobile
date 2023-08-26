@@ -1,4 +1,9 @@
 export type RootStackParams = {
+  HomeRoute: any;
   Main: any;
-  Auth: any;
+  Login: any;
+  Register: any;
+  AddRecipe: any;
+  ListComment: any;
+  DetailAccount: any;
 };
