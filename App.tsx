@@ -5,7 +5,7 @@ import LoginScreen from './src/pages/Login/LoginScreen';
 import 'react-native-gesture-handler'
 import RegisterScreen from './src/pages/Register/RegisterScreen';
 import HomeRoute from './src/HomeRoute';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import ListCategory from './src/pages/ListCategory/ListCategory';
 import PopularRecipe from './src/pages/Recipes/PopularRecipe';
 import store from './src/redux/store';

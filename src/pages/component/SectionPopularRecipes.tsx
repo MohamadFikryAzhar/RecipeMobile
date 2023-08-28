@@ -12,7 +12,7 @@ type popularRecipeType = {
 const SectionPopularRecipe = (props: popularRecipeType): JSX.Element => {
   return (
     <ScrollView style={styles.sectionRecipe}>
-      <Image source={require(`${props.image}`)} style={styles.imageRecipe}/>
+      <Image source={{uri: props.image}} style={styles.imageRecipe}/>
       <View style={styles.recipeInfo}>
         <Text style={styles.recipeTitle}>{props.title}</Text>
         <Text style={styles.recipeCategory}>{props.category}</Text>

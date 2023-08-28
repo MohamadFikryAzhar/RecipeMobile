@@ -3,7 +3,6 @@ import AddRecipe from "./pages/Recipes/AddRecipe";
 import Notification from "./pages/Recipes/Notification";
 import DetailAccount from "./pages/DetailAccount/DetailAccount";
 import HomeScreen from "./pages/Home/HomeScreen";
-// import HomeIcon from './../assets/home.svg';
 
 const Tab = createBottomTabNavigator();
 
