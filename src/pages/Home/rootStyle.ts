@@ -48,6 +48,10 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-evenly'
   },
+  homeIcon: {
+    width: 27,
+    height: 27,
+  },
 })
 
 export default styles;

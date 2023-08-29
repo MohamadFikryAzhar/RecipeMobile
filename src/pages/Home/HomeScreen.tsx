@@ -1,13 +1,13 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import { Link, useNavigation } from "@react-navigation/native";
 import { RootStackParams } from "../init/RootStackParams";
-import { Image, Text, TextInput, View } from 'react-native';
-import { ScrollView } from 'react-native';
+import { Image, Text, TextInput, View, ScrollView } from 'react-native';
 import styles from './rootStyle';
+import { ReactNode } from 'react';
 
 type homeScreenProp = StackNavigationProp<RootStackParams, 'Main'>
 
-export default function HomeScreen(): JSX.Element {
+export default function HomeScreen(): ReactNode {
   const navigation = useNavigation<homeScreenProp>();
 
   return (

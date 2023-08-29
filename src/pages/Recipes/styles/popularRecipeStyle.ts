@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   recipeInfo: {
     position: 'absolute',
-    marginStart: 120
+    marginStart: 110
   },
   recipeTitle: {
     fontSize: 20,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   userReaction: {
     position: 'absolute',
-    marginStart: 200,
+    marginStart: 250,
     flexDirection: 'row',
     marginTop: 10
   }
