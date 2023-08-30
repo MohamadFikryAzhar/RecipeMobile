@@ -1,10 +1,9 @@
 import { Image, ScrollView, Text, View, TouchableHighlight } from "react-native";
-import styles from "./../Recipes/styles/popularRecipeStyle";
-import { ReactNode } from "react";
+import styles from "../Recipes/styles/popularRecipeStyle";
 
-const SectionPopularRecipe = ({data}): ReactNode => (
+const SectionPopularRecipe = ({data}) => (
   <>
-    {data?.map((item: any, index: any) => {
+    {data?.map((item, index) => {
       return (
         <ScrollView key={index} style={styles.sectionRecipe}>
           <Image source={{ uri: item.image_path }} style={styles.imageRecipe} />

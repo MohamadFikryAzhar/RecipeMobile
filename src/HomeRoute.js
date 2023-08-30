@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator();
 
 export default function HomeRoute() {
   return (
-    <Tab.Navigator initialRouteName="Main">
+    <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen name={"Main"} component={HomeScreen} options={{tabBarIcon: () => {
           return (<Image style={styles.homeIcon} source={require('./assets/home.jpg')} />)}}} />
 

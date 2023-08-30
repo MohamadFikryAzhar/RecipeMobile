@@ -1,17 +1,13 @@
 import { Button, Image, Text, TextInput, View } from "react-native";
 import styles from "./registerStyle";
-import { RootStackParams } from "../init/RootStackParams";
-import {StackNavigationProp} from '@react-navigation/stack';
 import { Link, useNavigation } from "@react-navigation/native";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { ColorMatch } from "../init/ColorMatch";
 import { useDispatch } from "react-redux";
 import { registerAction } from "../../redux/actions/AuthAction";
 
-type authScreenProp = StackNavigationProp<RootStackParams, 'Register'>
-
-export default function RegisterScreen(): ReactNode {
-  const navigation = useNavigation<authScreenProp>();
+export default function RegisterScreen() {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -19,7 +15,19 @@ export default function RegisterScreen(): ReactNode {
   const [password, setPassword] = useState('');
 
   function registerUser() {
-    dispatch(registerAction(name, email, password, navigation));
+    let registerData = {
+      name: name,
+      email: email,
+      password: password
+    };
+
+    dispatch(registerAction(registerData))
+      .then(() => {
+        navigation.navigate('Login')
+      })
+      .catch(() => {
+        navigation.navigate('Register')
+      })
   }
 
   return (
@@ -31,6 +39,7 @@ export default function RegisterScreen(): ReactNode {
       <View style={styles.formRegister}>
         <TextInput 
           onChangeText={name => setName(name)} 
+          value={name}
           inputMode="text"
           placeholder="Name"
           style={styles.inputSize}
@@ -38,6 +47,7 @@ export default function RegisterScreen(): ReactNode {
         
         <TextInput 
           onChangeText={email => setEmail(email)} 
+          value={email}
           inputMode="email"
           placeholder="Email"
           style={styles.inputSize}
@@ -45,6 +55,7 @@ export default function RegisterScreen(): ReactNode {
 
         <TextInput 
           onChangeText={password => setPassword(password)} 
+          value={password}
           placeholder="Password"
           inputMode="text"
           style={styles.inputSize}

@@ -1,6 +1,6 @@
-import {initialState} from './../config/InitState';
+import {initialState} from '../config/InitState';
 
-export const loginReducer = (state = initialState, action: any) => {
+export const loginReducer = (state = initialState, action) => {
     switch(action.type) {
         case 'LOGIN_PENDING':
             return {
@@ -23,12 +23,20 @@ export const loginReducer = (state = initialState, action: any) => {
                 isError: true,
                 errorMessage: action.payload
             }
+        case 'LOGOUT_SUCCESS':
+            return {
+                ...state,
+                data: null,
+                isLoading: false,
+                isError: false,
+                errorMessage: ''
+            }
         default:
             return state;
     }
 }
 
-export const registerReducer = (state = initialState, action: any) => {
+export const registerReducer = (state = initialState, action) => {
     switch(action.type) {
         case 'REGISTER_PENDING':
             return {
@@ -40,38 +48,10 @@ export const registerReducer = (state = initialState, action: any) => {
                 ...state,
                 data: action.payload,
                 isLoading: false,
-                isError: true,
+                isError: false,
                 errorMessage: ''
             }
         case 'REGISTER_FAILED':
-            return {
-                ...state,
-                data: null,
-                isLoading: false,
-                isError: true,
-                errorMessage: action.payload
-            }
-        default: 
-            return state;
-    }
-}
-
-export const logoutReducer = (state = initialState, action: any) => {
-    switch(action.type) {
-        case 'LOGOUT_PENDING':
-            return {
-                ...state,
-                isLoading: true
-            }
-        case 'LOGOUT_SUCCESS':
-            return {
-                ...state,
-                data: action.payload,
-                isLoading: false,
-                isError: true,
-                errorMessage: ''
-            }
-        case 'LOGOUT_FAILED':
             return {
                 ...state,
                 data: null,

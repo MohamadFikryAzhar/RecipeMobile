@@ -1,7 +1,7 @@
 import { Image, ScrollView, View } from "react-native";
 import styles from "./listCategoryStyle";
 
-export default function ListCategory(): JSX.Element {
+export default function ListCategory() {
   return (
     <ScrollView>
       <View style={styles.categoryStyle}>

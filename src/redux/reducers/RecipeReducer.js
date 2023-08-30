@@ -1,6 +1,6 @@
-import {initialState} from './../config/InitState';
+import {initialState} from '../config/InitState';
 
-export const getAllRecipeReducer = (state = initialState, action: any) => {
+export const getAllRecipeReducer = (state = initialState, action) => {
     if (action.type === 'GET_RECIPES_PENDING') {
         return {
             ...state,
@@ -27,7 +27,7 @@ export const getAllRecipeReducer = (state = initialState, action: any) => {
     return state;
 }
 
-export const getUserRecipeReducer = (state = initialState, action: any) => {
+export const getUserRecipeReducer = (state = initialState, action) => {
     if (action.type === 'USER_RECIPES_PENDING') {
         return {
             ...state,
@@ -54,7 +54,7 @@ export const getUserRecipeReducer = (state = initialState, action: any) => {
     return state;
 }
 
-export const getRecipeReducer = (state = initialState, action: any) => {
+export const getRecipeReducer = (state = initialState, action) => {
     if (action.type === 'GET_RECIPE_PENDING') {
         return {
             ...state,
@@ -81,7 +81,7 @@ export const getRecipeReducer = (state = initialState, action: any) => {
     return state;
 }
 
-export const postRecipeReducer = (state = initialState, action: any) => {
+export const postRecipeReducer = (state = initialState, action) => {
     if (action.type === 'POST_RECIPE_PENDING') {
         return {
             ...state,
@@ -108,7 +108,7 @@ export const postRecipeReducer = (state = initialState, action: any) => {
     return state;
 }
 
-export const updateRecipeReducer = (state = initialState, action: any) => {
+export const updateRecipeReducer = (state = initialState, action) => {
     if (action.type === 'UPDATE_RECIPE_PENDING') {
         return {
             ...state,
@@ -135,7 +135,7 @@ export const updateRecipeReducer = (state = initialState, action: any) => {
     return state;
 }
 
-export const deleteRecipeReducer = (state = initialState, action: any) => {
+export const deleteRecipeReducer = (state = initialState, action) => {
     if (action.type === 'DELETE_RECIPE_PENDING') {
         return {
             ...state,

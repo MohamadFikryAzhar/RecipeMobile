@@ -1,25 +1,30 @@
 import { Button, Image, Text, TextInput, View } from "react-native";
 import styles from "./loginStyle";
-import { RootStackParams } from "../init/RootStackParams";
-import {StackNavigationProp} from '@react-navigation/stack';
 import { Link, useNavigation } from "@react-navigation/native";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { ColorMatch } from "../init/ColorMatch";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../redux/actions/AuthAction";
-import { RootState } from "../../redux/store";
 
-type authScreenProp = StackNavigationProp<RootStackParams, 'Login'>
-
-export default function LoginScreen(): ReactNode {
-  const navigation = useNavigation<authScreenProp>();
+export default function LoginScreen() {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
-  const login = useSelector((state: RootState) => state.login);
+  const login = useSelector(state => state.login);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   function loginUser() {
-    dispatch(loginAction({email, password}, navigation))
+    let loginData = {
+      email: email,
+      password: password
+    };
+
+    dispatch(loginAction(loginData))
+      .then(() => {
+        navigation.replace('Main');  
+      }).catch(() => {
+        navigation.replace('Login')
+      });
   } 
 
   return (

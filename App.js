@@ -8,19 +8,18 @@ import HomeRoute from './src/HomeRoute';
 import { useSelector } from 'react-redux';
 import ListCategory from './src/pages/ListCategory/ListCategory';
 import PopularRecipe from './src/pages/Recipes/PopularRecipe';
-import { RootState } from './src/redux/store';
 
 const Stack = createNativeStackNavigator();
 
-function App(): Element {
-  const login: any = useSelector((state: RootState) => state.login);
+function App() {
+  const login = useSelector(state => state.login);
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {
-          login.accessToken ? (
+          login.data ? (
             <>
-              <Stack.Screen name="HomeRoute" component={HomeRoute} options={{headerShown: false}} />
+              <Stack.Screen name="HomeRoute" component={HomeRoute} />
               <Stack.Screen name="Categories" component={ListCategory} />
               <Stack.Screen name="AllRecipe" component={PopularRecipe} />
             </>

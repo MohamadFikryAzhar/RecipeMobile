@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { loginReducer, registerReducer} from "./AuthReducer";
 import {deleteRecipeReducer, getAllRecipeReducer, getRecipeReducer, getUserRecipeReducer, postRecipeReducer, updateRecipeReducer} from './RecipeReducer';
 
-const rootReducer: any = combineReducers({
+const rootReducer = combineReducers({
     login: loginReducer,
     register: registerReducer,
     recipes: getAllRecipeReducer,
