@@ -1,6 +1,6 @@
 import axios from "axios";
 import {BASE_URL} from '@env';
-import {headers} from '../config/InitState'
+import {addRecipeHeader, headers} from '../config/InitState'
 
 export const getAllRecipeAction = (page = 1, limit = 5) => 
     async (dispatch) => {
@@ -26,11 +26,11 @@ export const getUserRecipeAction = (user = '', offset = 1) =>
         }
     }
 
-export const getRecipeAction = (id) => 
+export const getRecipeAction = (id, headers) => 
     async (dispatch) => {
         try {
             dispatch({type: 'GET_RECIPE_PENDING'})
-            const result = await axios.get(`${BASE_URL}/recipe/${id}/detail`, {headers})
+            const result = await axios.get(`${BASE_URL}/recipe/${id}/detail`, headers)
             dispatch({payload: result.data.data, type: 'GET_RECIPE_SUCCESS'})
         } catch (error) {
             dispatch({payload: error.response.data.message, type: 'GET_RECIPE_FAILED'})
@@ -74,25 +74,23 @@ export const categorizedRecipeAction = (category = '') =>
         }
     }
 
-export const postRecipeAction = (data, navigate) => 
+export const postRecipeAction = (data, headers) => 
     async (dispatch) => {
         try {
             dispatch({type: 'POST_RECIPE_PENDING'})
-            const result = await axios.post(`${BASE_URL}/recipe`, data, {headers})
-            navigate('/account')
+            const result = await axios.post(`${BASE_URL}/recipe`, data, headers)
             dispatch({payload: result.data.data, type: 'POST_RECIPE_SUCCESS'})
         } catch (error) {
-            dispatch({payload: error.response.data.message, type: 'POST_RECIPE_FAILED'})
-            console.error(error.message);
+            console.error(error);
+            dispatch({payload: error.response.data.data.message, type: 'POST_RECIPE_FAILED'})
         }
     }
 
-export const updateRecipeAction = (data, id, navigate) => 
+export const updateRecipeAction = (data, id, headers) => 
     async (dispatch) => {
         try {
             dispatch({type: 'UPDATE_RECIPE_PENDING'})
-            const result = await axios.put(`${BASE_URL}/recipe/${id}`, data, {headers})
-            navigate('/account')
+            const result = await axios.put(`${BASE_URL}/recipe/${id}`, data, headers)
             dispatch({payload: result.data.data, type: 'UPDATE_RECIPE_SUCCESS'})
         } catch (error) {
             dispatch({payload: error.response.data.message, type: 'UPDATE_RECIPE_FAILED'})
@@ -100,12 +98,11 @@ export const updateRecipeAction = (data, id, navigate) =>
         }
     }
 
-export const deleteRecipeAction = (id, navigate) => 
+export const deleteRecipeAction = (id, headers) => 
     async (dispatch) => {
         try {
             dispatch({type: 'DELETE_RECIPE_PENDING'})
-            const result = await axios.delete(`${BASE_URL}/recipe/${id}`, {headers})
-            navigate('/recipe')
+            const result = await axios.delete(`${BASE_URL}/recipe/${id}`, headers)
             dispatch({payload: result.data.data, type: 'DELETE_RECIPE_SUCCESS'})
         } catch (error) {
             dispatch({payload: error.response.data.message, type: 'DELETE_RECIPE_FAILED'})

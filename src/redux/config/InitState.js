@@ -1,4 +1,4 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import localStorage from "@react-native-async-storage/async-storage";
 
 export const initialState = {
   data: [],
@@ -8,7 +8,14 @@ export const initialState = {
 };
 
 export const headers = {
-  header: {
-    Authorization: AsyncStorage.getItem("token")
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`
+  }
+}
+
+export const addRecipeHeader = {
+  headers: {
+    "Content-Type": "multipart/form-data",
+    Authorization: `Bearer ${localStorage.getItem("token")}`
   }
 }

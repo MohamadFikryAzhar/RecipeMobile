@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   sectionRecipe: {
     marginTop: 25,
-    marginStart: 40
+    marginStart: 20
   },
   imageRecipe: {
     width: 100,
@@ -28,34 +28,25 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold'
   },
-  recipeUploader: {
-    fontSize: 14,
-    fontWeight: '100',
-    marginTop: 10
-  },
-  userReaction: {
-    position: 'absolute',
-    marginStart: 250,
-    flexDirection: 'row',
-    marginTop: 10
-  },
   editRecipe: {
     position: 'absolute',
     marginStart: 250,
     flexDirection: 'column',
-    marginTop: 10
+    gap: 6
   },
   editBtn: {
     backgroundColor: ColorMatch.peru,
     borderRadius: 10,
-    width: 100
+    width: 60
   },
   deleteBtn: {
     backgroundColor: ColorMatch.brown,
-    borderRadius: 10
+    borderRadius: 10,
+    width: 60
   },
   belowActionBtn: {
-    color: ColorMatch.white
+    color: ColorMatch.white,
+    textAlign: 'center'
   }
 })
 
