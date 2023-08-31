@@ -1,10 +1,8 @@
-import { Link, useNavigation } from "@react-navigation/native";
+import { Link } from "@react-navigation/native";
 import { Image, Text, TextInput, View, ScrollView } from 'react-native';
 import styles from './rootStyle';
 
 export default function HomeScreen() {
-  const navigation = useNavigation();
-
   return (
     <ScrollView>
       <View style={styles.searchGroup}>

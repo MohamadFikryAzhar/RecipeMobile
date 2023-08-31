@@ -21,7 +21,7 @@ export default function LoginScreen() {
 
     dispatch(loginAction(loginData))
       .then(() => {
-        navigation.replace('HomeRoute', {screen: 'Main'});  
+        navigation.replace('Main');  
       }).catch(() => {
         navigation.replace('Login')
       });

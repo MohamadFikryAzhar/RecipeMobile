@@ -20,7 +20,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {
-          login.data.accesstoken ? (
+          login.data ? (
             <>
               <Stack.Screen name="HomeRoute" component={HomeRoute} />
               <Stack.Screen name="Categories" component={ListCategory} />
