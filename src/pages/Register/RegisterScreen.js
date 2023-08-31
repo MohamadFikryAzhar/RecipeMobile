@@ -9,25 +9,21 @@ import { registerAction } from "../../redux/actions/AuthAction";
 export default function RegisterScreen() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [registerData, setRegisterData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
 
   function registerUser() {
-    let registerData = {
-      name: name,
-      email: email,
-      password: password
-    };
+    dispatch(registerAction(registerData, navigation.navigate))
+  }
 
-    dispatch(registerAction(registerData))
-      .then(() => {
-        navigation.navigate('Login')
-      })
-      .catch(() => {
-        navigation.navigate('Register')
-      })
+  function onRegisterChange(name, value) {
+    setRegisterData({
+      ...registerData,
+      [name]:value
+    })
   }
 
   return (
@@ -38,24 +34,24 @@ export default function RegisterScreen() {
 
       <View style={styles.formRegister}>
         <TextInput 
-          onChangeText={name => setName(name)} 
-          value={name}
+          onChangeText={name => onRegisterChange('name', name)} 
+          value={registerData.name}
           inputMode="text"
           placeholder="Name"
           style={styles.inputSize}
         />
         
         <TextInput 
-          onChangeText={email => setEmail(email)} 
-          value={email}
+          onChangeText={email => onRegisterChange('email', email)} 
+          value={registerData.email}
           inputMode="email"
           placeholder="Email"
           style={styles.inputSize}
         />
 
         <TextInput 
-          onChangeText={password => setPassword(password)} 
-          value={password}
+          onChangeText={password => onRegisterChange('password', password)} 
+          value={registerData.password}
           placeholder="Password"
           inputMode="text"
           style={styles.inputSize}

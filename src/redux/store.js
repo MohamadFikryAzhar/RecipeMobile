@@ -4,7 +4,6 @@ import rootReducers from "./reducers/RootReducer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 import {persistReducer, persistStore} from "redux-persist";
-import {createLogger} from 'redux-logger';
 
 const persistConfig = {
   key: "root",
@@ -14,10 +13,8 @@ const persistConfig = {
 
 const persistReduce = persistReducer(persistConfig, rootReducers);
 
-const logger = createLogger({})
-
 export default () => {
-  const store = legacy_createStore(persistReduce, applyMiddleware(logger, thunk))
+  const store = legacy_createStore(persistReduce, applyMiddleware(thunk))
   const persistor = persistStore(store);
 
   return {

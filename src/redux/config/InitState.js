@@ -1,21 +1,29 @@
-import localStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+import {BASE_URL} from '@env';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const initialState = {
+const initialState = {
   data: [],
   isLoading: false,
   isError: false,
   errorMessage: ''
 };
 
-export const headers = {
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`
-  }
-}
+const instanceServe = axios.create({
+  baseURL: `${BASE_URL}`
+});
 
-export const addRecipeHeader = {
-  headers: {
-    "Content-Type": "multipart/form-data",
-    Authorization: `Bearer ${localStorage.getItem("token")}`
+instanceServe.interceptors.request.use(async (config) => {
+  try {
+    const token = await AsyncStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+  } catch (error) {
+    console.error(error);
   }
-}
+
+  return config;
+})
+
+export {instanceServe, initialState}

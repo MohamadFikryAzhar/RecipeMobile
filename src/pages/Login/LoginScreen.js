@@ -10,22 +10,21 @@ export default function LoginScreen() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const login = useSelector(state => state.login);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: ''
+  });
 
   function loginUser() {
-    let loginData = {
-      email: email,
-      password: password
-    };
+    dispatch(loginAction(loginData, navigation.navigate));
+  }
 
-    dispatch(loginAction(loginData))
-      .then(() => {
-        navigation.replace('Main');  
-      }).catch(() => {
-        navigation.replace('Login')
-      });
-  } 
+  function onLoginChange(name, value) {
+    setLoginData({
+      ...loginData,
+      [name]:value
+    })
+  }
 
   return (
     <View style={styles.bgLogin}>
@@ -34,8 +33,8 @@ export default function LoginScreen() {
       <Text style={styles.fontSubTitle}>Log in to your existing account</Text>
       <View style={styles.formLogin}>
         <TextInput 
-          onChangeText={email => setEmail(email)} 
-          value={email}
+          onChangeText={email => onLoginChange('email', email)} 
+          value={loginData.email}
           keyboardType="email-address"
           autoCapitalize="none"
           placeholder="Email"
@@ -44,8 +43,8 @@ export default function LoginScreen() {
 
         {login.isError ?? <Text>{login.errorMessage}</Text>}
         <TextInput 
-          onChangeText={password => setPassword(password)} 
-          value={password}
+          onChangeText={password => onLoginChange('password', password)} 
+          value={loginData.password}
           inputMode="text"
           placeholder="Password"
           style={styles.inputSize}
