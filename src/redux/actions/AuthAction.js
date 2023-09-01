@@ -8,9 +8,8 @@ export const loginAction = (data, navigate) =>
         axios.post(`${BASE_URL}/login`, data)
             .then(result => {
                 AsyncStorage.setItem("token", result.data.accesstoken);
-                AsyncStorage.setItem("name", result.data.data.name);
-                AsyncStorage.setItem("email", result.data.data.email);
-                AsyncStorage.setItem("photo", result.data.data.photo);
+                AsyncStorage.setItem("email", result.data.email);
+                AsyncStorage.setItem("name", result.data.name);
                 navigate('Main')
                 dispatch({type: 'LOGIN_SUCCESS', payload: result.data.data})
             })

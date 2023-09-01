@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getRecipeAction, updateRecipeAction } from "../../redux/actions/RecipeAction";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { cameraLaunch, galleryLaunch } from "../init/CameraInit";
+import { launchCamera, launchImageLibrary } from "react-native-image-picker";
+import { storageOptions } from "../../redux/config/InitState";
 
 export default function EditRecipe() {
   const route = useRoute();
@@ -19,6 +20,36 @@ export default function EditRecipe() {
     image_path: '',
     category: ''
   })
+
+  function cameraLaunch() {
+    launchCamera({storageOptions}, res => {
+      if (res.didCancel) {
+        console.info("User canceled")
+      } else if (res.error) {
+        console.error(res.errorMessage);
+      } else {
+        setRecipeData({
+          ...recipeData,
+          image_path: res.assets[0]
+        })
+      }
+    })
+  }
+
+  function imageLibraryLaunch() {
+    launchImageLibrary({storageOptions}, res => {
+      if (res.didCancel) {
+        console.info("User canceled")
+      } else if (res.error) {
+        console.error(res.errorMessage);
+      } else {
+        setRecipeData({
+          ...recipeData,
+          image_path: res.assets[0]
+        })
+      }
+    })
+  }
 
   useEffect(() => {
     dispatch(getRecipeAction(id, headers));
@@ -61,7 +92,7 @@ export default function EditRecipe() {
           <TouchableOpacity style={styles.photoInput} onPress={cameraLaunch}>
             <Text style={styles.uploadPhotoText}>Upload Food Photo</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.photoInput} onPress={galleryLaunch}>
+          <TouchableOpacity style={styles.photoInput} onPress={imageLibraryLaunch}>
             <Text style={styles.uploadPhotoText}>Upload Food Gallery</Text>
           </TouchableOpacity>
         </View>

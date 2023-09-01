@@ -9,6 +9,11 @@ const initialState = {
   errorMessage: ''
 };
 
+const storageOptions = {
+  skipBackup: true,
+  path: 'images'
+}
+
 const instanceServe = axios.create({
   baseURL: `${BASE_URL}`
 });
@@ -26,4 +31,4 @@ instanceServe.interceptors.request.use(async (config) => {
   return config;
 })
 
-export {instanceServe, initialState}
+export {instanceServe, initialState, storageOptions}
