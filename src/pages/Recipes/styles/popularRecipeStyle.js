@@ -11,6 +11,18 @@ const styles = StyleSheet.create({
     marginTop: 25,
     marginStart: 30
   },
+  searchGroup: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 12
+  },
+  searchBar: {
+    width: 320,
+    height: 50,
+    borderColor: ColorMatch.orange,
+    borderRadius: 10,
+    borderWidth: 1
+  },
   imageRecipe: {
     width: 100,
     height: 90,

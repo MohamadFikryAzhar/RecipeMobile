@@ -6,7 +6,6 @@ import 'react-native-gesture-handler'
 import RegisterScreen from './src/pages/Register/RegisterScreen';
 import HomeRoute from './src/HomeRoute';
 import { useSelector } from 'react-redux';
-import PopularRecipe from './src/pages/Recipes/PopularRecipe';
 import UserRecipe from './src/pages/Recipes/UserRecipe';
 import DetailRecipe from './src/pages/Recipes/DetailRecipe';
 import EditRecipe from './src/pages/Recipes/EditRecipe';
@@ -22,7 +21,6 @@ function App() {
           login.data ? (
             <>
               <Stack.Screen name="HomeRoute" component={HomeRoute} />
-              <Stack.Screen name="AllRecipe" component={PopularRecipe} />
               <Stack.Screen name="DetailRecipe" component={DetailRecipe} />
               <Stack.Screen name="UserRecipe" component={UserRecipe} />
               <Stack.Screen name="EditRecipe" component={EditRecipe} />
