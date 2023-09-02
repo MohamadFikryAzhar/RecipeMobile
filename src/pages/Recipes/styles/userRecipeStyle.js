@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   recipeTitle: {
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   recipeCategory: {
     fontSize: 14,
@@ -30,14 +30,16 @@ const styles = StyleSheet.create({
   },
   editRecipe: {
     position: 'absolute',
-    marginStart: 250,
-    flexDirection: 'column',
+    marginStart: 110,
+    marginTop: 53,
+    flexDirection: 'row',
     gap: 6
   },
   editBtn: {
     backgroundColor: ColorMatch.peru,
     borderRadius: 10,
-    width: 60
+    width: 60,
+    height: 38
   },
   deleteBtn: {
     backgroundColor: ColorMatch.brown,
@@ -46,7 +48,9 @@ const styles = StyleSheet.create({
   },
   belowActionBtn: {
     color: ColorMatch.white,
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 5,
+    lineHeight: 15
   }
 })
 

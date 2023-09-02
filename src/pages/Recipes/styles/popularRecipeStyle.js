@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   sectionRecipe: {
     marginTop: 25,
-    marginStart: 40
+    marginStart: 30
   },
   imageRecipe: {
     width: 100,
@@ -35,9 +35,10 @@ const styles = StyleSheet.create({
   },
   userReaction: {
     position: 'absolute',
-    marginStart: 250,
+    marginStart: 190,
     flexDirection: 'row',
-    marginTop: 10
+    marginTop: 45,
+    gap: 10
   },
   editRecipe: {
     position: 'absolute',

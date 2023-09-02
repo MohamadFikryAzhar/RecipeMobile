@@ -1,6 +1,6 @@
 import { Button, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "./styles/addRecipeStyle";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { postRecipeAction } from "../../redux/actions/RecipeAction";
 import { useNavigation } from "@react-navigation/native";
@@ -25,10 +25,7 @@ export default function AddRecipe() {
       } else if (res.error) {
         console.error(res.errorMessage);
       } else {
-        setRecipeData({
-          ...recipeData,
-          image_path: res.assets[0]
-        })
+        setSelectedImage(res.assets[0])
       }
     })
   }
@@ -40,20 +37,19 @@ export default function AddRecipe() {
       } else if (res.error) {
         console.error(res.errorMessage);
       } else {
-        setRecipeData({
-          ...recipeData,
-          image_path: res.assets[0]
-        })
+        setSelectedImage(res.assets[0])
       }
     })
   }
 
-  const uploadRecipe = async () => {
+  const uploadRecipe = () => {
     let addRecipeData = new FormData();
     addRecipeData.append("title", recipeData.title);
     addRecipeData.append("ingredients", recipeData.ingredients);
-    selectedImage && addRecipeData.append("image_path", {uri: selectedImage.uri, name: selectedImage.fileName, type: selectedImage.type});
     addRecipeData.append("category", recipeData.category);
+    if (selectedImage) {
+      addRecipeData.append("image_path", {uri: selectedImage.uri, name: selectedImage.fileName, type: selectedImage.type});
+    }
 
     dispatch(postRecipeAction(addRecipeData, navigation.navigate));
   }

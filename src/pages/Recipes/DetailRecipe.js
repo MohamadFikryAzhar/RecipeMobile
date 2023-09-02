@@ -1,6 +1,6 @@
 import { useRoute } from "@react-navigation/native";
 import { useEffect } from "react";
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipeAction } from "../../redux/actions/RecipeAction";
 
@@ -9,23 +9,20 @@ export default function DetailRecipe() {
   const {id} = route.params;
   const dispatch = useDispatch();
   const recipe = useSelector(state => state.recipe);
-  const login = useSelector(state => state.login);
-
-  const headers = {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      "Authorization": `Bearer ${login.data.accesstoken}`
-    }
-  }
+  const {data} = recipe;
 
   useEffect(() => {
-    dispatch(getRecipeAction(id, headers))
+    dispatch(getRecipeAction(id))
   }, [])
 
   return (
     <View>
       <Text>Detail recipe activity</Text>
-      <Text>{recipe.title}</Text>
+      <Image source={{ uri: data.image_path }}/>
+      <Text>{data.title}</Text>
+      <Text>{data.ingredients}</Text>
+      <Text>{data.category}</Text>
+      <Text>{data.user_name}</Text>
     </View>
   )
 }

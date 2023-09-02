@@ -2,6 +2,9 @@ import { StyleSheet } from "react-native";
 import { ColorMatch } from "../init/ColorMatch";
 
 const styles = StyleSheet.create({
+  HomeLayoutStyle: {
+    marginHorizontal: 5
+  },
   fontRootPage: {
     fontSize: 100
   },
@@ -27,26 +30,63 @@ const styles = StyleSheet.create({
     marginStart: 10,
     marginBottom: 10
   },  
+  popularStyle: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-evenly',
+    gap: -80
+  }, 
+  carouselText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    left: -160,
+    marginTop: 115,
+    color: ColorMatch.white
+  },  
   categoryInfo: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-evenly'
   },
+  categoryStyle: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-evenly',
+    gap: -10
+  },  
+  categoryText: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    left: -40,
+    marginTop: 65,
+  },  
   textCategory: {
     fontSize: 20,
     marginTop: 12,
     marginBottom: 12,
-    marginLeft: -32
+  },
+  newRecipeStyle: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-evenly',
+    gap: -40
+  },
+  bgNewRecipe: {
+    backgroundColor: ColorMatch.white,
+    left: -120,
+    marginTop: 75,
+  },
+  newRecipeTitle: {
+    color: ColorMatch.black,
+    fontSize: 20
+  },
+  newRecipeIngredients: {
+    color: ColorMatch.black,
   },
   linkMoreCategory: {
     fontSize: 13,
     marginTop: 20,
     color: ColorMatch.blue
-  },
-  categoryStyle: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-evenly'
   },
   homeIcon: {
     width: 27,

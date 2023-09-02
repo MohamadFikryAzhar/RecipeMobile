@@ -23,12 +23,30 @@ instanceServe.interceptors.request.use(async (config) => {
     const token = await AsyncStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+      config.headers["Content-Type"] = "multipart/form-data";
     }
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 
   return config;
 })
 
-export {instanceServe, initialState, storageOptions}
+const instanceUrl = axios.create({
+  baseURL: `${BASE_URL}`
+});
+
+instanceUrl.interceptors.request.use(async (config) => {
+  try {
+    const token = await AsyncStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+  } catch (error) {
+    console.error(error)
+  }
+
+  return config;
+})
+
+export {instanceServe, instanceUrl, initialState, storageOptions}

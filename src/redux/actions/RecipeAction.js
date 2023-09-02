@@ -1,6 +1,6 @@
 import axios from "axios";
 import {BASE_URL} from '@env';
-import {instanceServe} from '../config/InitState'
+import {instanceServe, instanceUrl} from '../config/InitState'
 
 export const getAllRecipeAction = (page = 1, limit = 5) => 
     async (dispatch) => {
@@ -74,7 +74,7 @@ export const categorizedRecipeAction = (category = '') =>
         }
     }
 
-export const postRecipeAction = async (data, navigate) => async (dispatch) => {
+export const postRecipeAction = (data, navigate) => async (dispatch) => {
         try {
             dispatch({type: 'POST_RECIPE_PENDING'})
             const result = await instanceServe.post(`${BASE_URL}/recipe`, data)
@@ -87,28 +87,28 @@ export const postRecipeAction = async (data, navigate) => async (dispatch) => {
         }
     }
 
-export const updateRecipeAction = async (data, id, navigate) => 
-    async (dispatch) => {
+export const updateRecipeAction = (data, id, navigate) => async (dispatch) => {
         try {
             dispatch({type: 'UPDATE_RECIPE_PENDING'})
             const result = await instanceServe.put(`${BASE_URL}/recipe/${id}`, data)
             navigate('Main')
             dispatch({payload: result.data.data, type: 'UPDATE_RECIPE_SUCCESS'})
         } catch (error) {
-            dispatch({payload: error.response.data.message, type: 'UPDATE_RECIPE_FAILED'})
             console.error(error.message);
+            navigate('EditRecipe')
+            dispatch({payload: error.response.data.message, type: 'UPDATE_RECIPE_FAILED'})
         }
     }
 
-export const deleteRecipeAction = async (id, navigate) => 
-    async (dispatch) => {
+export const deleteRecipeAction = (id, navigate) => async (dispatch) => {
         try {
             dispatch({type: 'DELETE_RECIPE_PENDING'})
-            const result = await instanceServe.delete(`${BASE_URL}/recipe/${id}`)
+            const result = await instanceUrl.delete(`${BASE_URL}/recipe/${id}`)
             navigate('Main')
             dispatch({payload: result.data.data, type: 'DELETE_RECIPE_SUCCESS'})
         } catch (error) {
-            dispatch({payload: error.response.data.message, type: 'DELETE_RECIPE_FAILED'})
             console.error(error.message);
+            navigate('UserRecipe')
+            dispatch({payload: error.response.data.message, type: 'DELETE_RECIPE_FAILED'})
         }
     }

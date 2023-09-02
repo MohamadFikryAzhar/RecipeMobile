@@ -1,29 +1,15 @@
 import { Image, ScrollView, Text, View, TouchableHighlight } from "react-native";
 import styles from "../Recipes/styles/userRecipeStyle";
 import { deleteRecipeAction } from "../../redux/actions/RecipeAction";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
 const SectionUserRecipe = ({data}) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const login = useSelector(state => state.login);
-
-  const headers = {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      "Authorization": `Bearer ${login.data.accesstoken}`
-    }
-  }
 
   function deleteRecipe(id) {
-    dispatch(deleteRecipeAction(id, headers))
-      .then(() => {
-        navigation.goBack()
-      })
-      .catch(err => {
-        console.error(err);
-      })
+    dispatch(deleteRecipeAction(id, navigation.navigate));
   }
   return (
     <>
@@ -36,7 +22,7 @@ const SectionUserRecipe = ({data}) => {
               <Text style={styles.recipeCategory}>{item.category}</Text>
             </View>
             <View style={styles.editRecipe}>
-              <TouchableHighlight style={styles.editBtn} onPress={() => navigation.push('EditRecipe')}>
+              <TouchableHighlight style={styles.editBtn} onPress={() => navigation.push('EditRecipe', {id: item.id})}>
                 <Text style={styles.belowActionBtn}>Edit Recipe</Text>
               </TouchableHighlight>
               <TouchableHighlight style={styles.deleteBtn} onPress={() => deleteRecipe(item.id)}>
