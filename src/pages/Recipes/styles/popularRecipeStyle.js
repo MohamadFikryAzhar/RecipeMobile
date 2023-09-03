@@ -11,25 +11,60 @@ const styles = StyleSheet.create({
     marginTop: 25,
     marginStart: 30
   },
-  searchGroup: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    marginTop: 12,
-    marginLeft: 30
-  },
   searchBar: {
-    width: 240,
+    marginStart: 20,
+    marginTop: 10,
+    width: 320,
     height: 50,
     borderColor: ColorMatch.orange,
     borderRadius: 10,
     borderWidth: 1
   },
-  sortByStyle: {
-    marginLeft: 30
-  },
-  sortStyle: {
-    marginLeft: 30
+  sortGroup: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },  
+  container: {
+    backgroundColor: 'white',
+    padding: 16,
+  },
+  dropdown: {
+    height: 50,
+    width: 100,
+    marginStart: 20,
+    marginTop: 10,
+    borderColor: 'gray',
+    borderWidth: 0.5,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+  },
+  icon: {
+    marginRight: 5,
+  },
+  label: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    left: 22,
+    top: 8,
+    zIndex: 999,
+    paddingHorizontal: 8,
+    fontSize: 14,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+  },
   imageRecipe: {
     width: 100,
     height: 90,

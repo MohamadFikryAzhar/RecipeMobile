@@ -1,11 +1,12 @@
 import { ScrollView, Text, TextInput, View } from "react-native";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from "./styles/popularRecipeStyle";
 import SectionPopularRecipe from "../component/SectionPopularRecipes";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipeAction, searchRecipeAction, sortingRecipeAction } from "../../redux/actions/RecipeAction";
-import { Picker } from "@react-native-picker/picker";
 import { sortByOptions, sortOptions } from "../../redux/config/InitState";
+import { Dropdown } from "react-native-element-dropdown";
 
 export default function PopularRecipe() {
   const dispatch = useDispatch();
@@ -34,45 +35,63 @@ export default function PopularRecipe() {
   return (
     <ScrollView>
       <Text style={styles.fontTitle}>Popular Recipe</Text>
-      <View style={styles.searchGroup}>
-        <TextInput 
-          autoCapitalize="none" 
-          autoCorrect={false} 
-          clearButtonMode="always" 
-          value={search} 
-          onChangeText={searchValue => setSearch(searchValue)}
-          style={styles.searchBar} 
-          placeholder='Search Recipe' />
-        <Picker
-          style={styles.sortByStyle}
-          selectedValue={selectedSortBy}
-          onValueChange={sortByValue => {
-            setSelectedSortBy(sortByValue)
+      <TextInput 
+        autoCapitalize="none" 
+        autoCorrect={false} 
+        clearButtonMode="always" 
+        value={search} 
+        onChangeText={searchValue => setSearch(searchValue)}
+        style={styles.searchBar} 
+        placeholder='Search Recipe' />
+      <View style={styles.sortGroup}>
+        <Dropdown
+          style={[styles.dropdown]}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          inputSearchStyle={styles.inputSearchStyle}
+          iconStyle={styles.iconStyle}
+          data={sortByOptions}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder={'Select item'}
+          searchPlaceholder="Search..."
+          value={selectedSortBy}
+          onChange={item => {
+            setSelectedSortBy(item.value);
           }}
-        >
-          {sortByOptions?.map(option => {
-            <Picker.Item
-              key={option.value}
-              label={option.label}
-              value={option.value}
+          renderLeftIcon={() => (
+            <Ionicons
+              style={styles.icon}
+              name="funnel"
+              size={20}
             />
-          })}
-        </Picker>          
-        <Picker
-          style={styles.sortStyle}
-          selectedValue={selectedSort}
-          onValueChange={sortValue => {
-            setSelectedSort(sortValue)
+          )}
+        />
+        <Dropdown
+          style={[styles.dropdown]}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          inputSearchStyle={styles.inputSearchStyle}
+          iconStyle={styles.iconStyle}
+          data={sortOptions}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder={'Select item'}
+          searchPlaceholder="Search..."
+          value={selectedSort}
+          onChange={item => {
+            setSelectedSort(item.value);
           }}
-        >
-          {sortOptions?.map(option => {
-            <Picker.Item
-              key={option.value}
-              label={option.label}
-              value={option.value}
+          renderLeftIcon={() => (
+            <Ionicons
+              style={styles.icon}
+              name="funnel"
+              size={20}
             />
-          })}
-        </Picker>
+          )}
+        />
       </View>
       <SectionPopularRecipe data={data} />
     </ScrollView>

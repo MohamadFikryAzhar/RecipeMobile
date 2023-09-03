@@ -15,14 +15,14 @@ const storageOptions = {
 }
 
 const sortByOptions = [
-  {label: 'title', value: '1'},
-  {label: 'ingredients', value: '2'},
-  {label: 'user_name', value: '3'}
+  {label: 'title', value: 'title'},
+  {label: 'ingredients', value: 'ingredients'},
+  {label: 'user_name', value: 'user_name'}
 ];
 
 const sortOptions = [
-  {label: 'A-Z', value: '1'},
-  {label: 'Z-A', value: '2'}
+  {label: 'A-Z', value: 'asc'},
+  {label: 'Z-A', value: 'desc'}
 ];
 
 const instanceServe = axios.create({
