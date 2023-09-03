@@ -8,6 +8,7 @@ export const getAllRecipeAction = (page = 1, limit = 5) =>
             dispatch({type: 'GET_RECIPES_PENDING'})
             const result = await axios.get(`${BASE_URL}/recipe/main?page=${page}&limit=${limit}`)
             dispatch({payload: result.data.data, type: 'GET_RECIPES_SUCCESS'})
+            return result.data.data
         } catch (error) {
             dispatch({payload: error.response.data.message, type: 'GET_RECIPES_FAILED'})
             console.error(error.message);
@@ -20,6 +21,7 @@ export const getUserRecipeAction = (user = '', offset = 1) =>
             dispatch({type: 'USER_RECIPES_PENDING'})
             const result = await instanceServe.get(`${BASE_URL}/recipe/user?user_name=${user}&page=${offset}&limit=5`)
             dispatch({payload: result.data.data, type: 'USER_RECIPES_SUCCESS'})
+            return result.data.data
         } catch (error) {
             dispatch({payload: error.response.data.message, type: 'USER_RECIPES_FAILED'})
             console.error(error.message);
@@ -32,6 +34,7 @@ export const getRecipeAction = (id) =>
             dispatch({type: 'GET_RECIPE_PENDING'})
             const result = await instanceServe.get(`${BASE_URL}/recipe/${id}/detail`)
             dispatch({payload: result.data.data, type: 'GET_RECIPE_SUCCESS'})
+            return result.data.data
         } catch (error) {
             dispatch({payload: error.response.data.message, type: 'GET_RECIPE_FAILED'})
             console.error(error.message);
@@ -44,6 +47,7 @@ export const searchRecipeAction = (data) =>
             dispatch({type: 'GET_RECIPES_PENDING'})
             const result = await instanceServe.get(`${BASE_URL}/recipe?search=${data}`)
             dispatch({payload: result.data.data, type: 'GET_RECIPES_SUCCESS'})
+            return result.data.data
         } catch (error) {
             dispatch({payload: error.response.data.message, type: 'GET_RECIPES_FAILED'})
             console.error(error.message);
@@ -56,6 +60,7 @@ export const sortingRecipeAction = (sortBy = '', sort = '') =>
             dispatch({type: 'GET_RECIPES_PENDING'})
             const result = await axios.get(`${BASE_URL}/recipe?sortBy=${sortBy}&sort=${sort}`)
             dispatch({payload: result.data.data, type: 'GET_RECIPES_SUCCESS'})
+            return result.data.data
         } catch (error) {
             dispatch({payload: error.response.data.message, type: 'GET_RECIPES_FAILED'})
             console.error(error.message);
@@ -68,6 +73,7 @@ export const categorizedRecipeAction = (category = '') =>
             dispatch({type: 'GET_RECIPES_PENDING'})
             const result = await axios.get(`${BASE_URL}/recipe/category?category=${category}`)
             dispatch({payload: result.data.data, type: 'GET_RECIPES_SUCCESS'})
+            return result.data.data
         } catch (error) {
             dispatch({payload: error.response.data.message, type: 'GET_RECIPES_FAILED'})
             console.error(error.message);
@@ -80,6 +86,7 @@ export const postRecipeAction = (data, navigate) => async (dispatch) => {
             const result = await instanceServe.post(`${BASE_URL}/recipe`, data)
             navigate('Main')
             dispatch({payload: result.data.data, type: 'POST_RECIPE_SUCCESS'})
+            return result.data.data
         } catch (error) {
             console.error(error);
             navigate('AddRecipe')
@@ -93,6 +100,7 @@ export const updateRecipeAction = (data, id, navigate) => async (dispatch) => {
             const result = await instanceServe.put(`${BASE_URL}/recipe/${id}`, data)
             navigate('Main')
             dispatch({payload: result.data.data, type: 'UPDATE_RECIPE_SUCCESS'})
+            return result.data.data
         } catch (error) {
             console.error(error.message);
             navigate('EditRecipe')
@@ -106,6 +114,7 @@ export const deleteRecipeAction = (id, navigate) => async (dispatch) => {
             const result = await instanceUrl.delete(`${BASE_URL}/recipe/${id}`)
             navigate('Main')
             dispatch({payload: result.data.data, type: 'DELETE_RECIPE_SUCCESS'})
+            return result.data.data
         } catch (error) {
             console.error(error.message);
             navigate('UserRecipe')

@@ -2,8 +2,7 @@ import axios from "axios";
 import {BASE_URL} from '@env';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const loginAction = (data, navigate) =>
-    async (dispatch) => {
+export const loginAction = (data, navigate) => async (dispatch) => {
         dispatch({type: 'LOGIN_PENDING'})
         axios.post(`${BASE_URL}/login`, data)
             .then(result => {
@@ -12,6 +11,7 @@ export const loginAction = (data, navigate) =>
                 AsyncStorage.setItem("name", result.data.data.name);
                 navigate('Main')
                 dispatch({type: 'LOGIN_SUCCESS', payload: result.data.data})
+                return result.data.data
             })
             .catch(err => {
                 navigate('Login')
@@ -27,6 +27,7 @@ export const registerAction = (data, navigate) =>
             .then(result => {
                 navigate('Login')
                 dispatch({type: 'REGISTER_SUCCESS', payload: result.data.data})
+                return result.data.data
             })
             .catch(err => {
                 navigate('Register')
