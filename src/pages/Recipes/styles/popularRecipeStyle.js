@@ -12,17 +12,24 @@ const styles = StyleSheet.create({
     marginStart: 30
   },
   searchGroup: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 12
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginTop: 12,
+    marginLeft: 30
   },
   searchBar: {
-    width: 320,
+    width: 240,
     height: 50,
     borderColor: ColorMatch.orange,
     borderRadius: 10,
     borderWidth: 1
   },
+  sortByStyle: {
+    marginLeft: 30
+  },
+  sortStyle: {
+    marginLeft: 30
+  },  
   imageRecipe: {
     width: 100,
     height: 90,

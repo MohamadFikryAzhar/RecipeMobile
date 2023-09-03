@@ -44,6 +44,7 @@ export default function PopularRecipe() {
           style={styles.searchBar} 
           placeholder='Search Recipe' />
         <Picker
+          style={styles.sortByStyle}
           selectedValue={selectedSortBy}
           onValueChange={sortByValue => {
             setSelectedSortBy(sortByValue)
@@ -58,6 +59,7 @@ export default function PopularRecipe() {
           })}
         </Picker>          
         <Picker
+          style={styles.sortStyle}
           selectedValue={selectedSort}
           onValueChange={sortValue => {
             setSelectedSort(sortValue)
