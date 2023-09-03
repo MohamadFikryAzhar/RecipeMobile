@@ -2,16 +2,16 @@ import axios from "axios";
 import {BASE_URL} from '@env';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const loginAction = (data, navigate) => async (dispatch) => {
+export const loginAction = (data, navigate) => async (dispatch) => { // jangan ditaruh di bawah
         dispatch({type: 'LOGIN_PENDING'})
         axios.post(`${BASE_URL}/login`, data)
             .then(result => {
                 AsyncStorage.setItem("token", result.data.accesstoken);
                 AsyncStorage.setItem("email", result.data.data.email);
                 AsyncStorage.setItem("name", result.data.data.name);
-                navigate('Main')
+                navigate('HomeRoute', {screen: 'Main'})
                 dispatch({type: 'LOGIN_SUCCESS', payload: result.data.data})
-                return result.data.data
+                return result.data.data;
             })
             .catch(err => {
                 navigate('Login')
@@ -20,14 +20,13 @@ export const loginAction = (data, navigate) => async (dispatch) => {
             })
     }
 
-export const registerAction = (data, navigate) =>
-    async (dispatch) => {
+export const registerAction = (data, navigate) => async (dispatch) => {
         dispatch({type: 'REGISTER_PENDING'})
         axios.post(`${BASE_URL}/register`, data)
             .then(result => {
                 navigate('Login')
                 dispatch({type: 'REGISTER_SUCCESS', payload: result.data.data})
-                return result.data.data
+                return result.data.data;
             })
             .catch(err => {
                 navigate('Register')
@@ -35,7 +34,7 @@ export const registerAction = (data, navigate) =>
             })
     }
 
-export const logoutAction = () =>
-    async (dispatch) => {
+export const logoutAction = (navigate) => async (dispatch) => {
         dispatch({type: 'LOGOUT_SUCCESS'})
+        navigate('Login')
     }

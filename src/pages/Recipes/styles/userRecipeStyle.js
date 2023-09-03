@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   sectionRecipe: {
     marginTop: 25,
-    marginStart: 20
+    marginStart: 40
   },
   imageRecipe: {
     width: 100,
