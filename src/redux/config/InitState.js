@@ -14,6 +14,17 @@ const storageOptions = {
   path: 'images'
 }
 
+const sortByOptions = [
+  {label: 'title', value: '1'},
+  {label: 'ingredients', value: '2'},
+  {label: 'user_name', value: '3'}
+];
+
+const sortOptions = [
+  {label: 'A-Z', value: '1'},
+  {label: 'Z-A', value: '2'}
+];
+
 const instanceServe = axios.create({
   baseURL: `${BASE_URL}`
 });
@@ -49,4 +60,4 @@ instanceUrl.interceptors.request.use(async (config) => {
   return config;
 })
 
-export {instanceServe, instanceUrl, initialState, storageOptions}
+export {instanceServe, instanceUrl, initialState, storageOptions, sortOptions, sortByOptions};
