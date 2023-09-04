@@ -1,4 +1,4 @@
-import { ScrollView, Text, TextInput, View } from "react-native";
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from "./styles/popularRecipeStyle";
 import SectionPopularRecipe from "../component/SectionPopularRecipes";
@@ -13,7 +13,6 @@ export default function PopularRecipe() {
   const [search, setSearch] = useState([]);
   const [selectedSort, setSelectedSort] = useState('');
   const [selectedSortBy, setSelectedSortBy] = useState('');
-  const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
   const recipes = useSelector(state => state.recipes);
@@ -94,6 +93,19 @@ export default function PopularRecipe() {
         />
       </View>
       <SectionPopularRecipe data={data} />
+      <View style={styles.paginationGroup}>
+        <TouchableOpacity 
+          onPress={() => setCurrentPage(currentPage - 1)}
+          style={currentPage <= 1 && styles.lessNone}
+        >
+          <Ionicons size={30} name="arrow-back-circle"/>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          onPress={() => setCurrentPage(currentPage + 1)}
+        >
+          <Ionicons size={30} name="arrow-forward-circle"/>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   )
 }

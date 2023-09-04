@@ -42,6 +42,14 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 5,
   },
+  paginationGroup: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  lessNone: {
+    display: 'none'
+  },  
   label: {
     position: 'absolute',
     backgroundColor: 'white',

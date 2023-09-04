@@ -1,9 +1,10 @@
-import { ScrollView, Text } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux"
 import styles from "./styles/popularRecipeStyle";
 import { useEffect, useState } from "react";
 import { getUserRecipeAction } from "../../redux/actions/RecipeAction";
 import SectionUserRecipe from "../component/SectionUserRecipes";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function UserRecipe() {
   const dispatch = useDispatch();
@@ -20,6 +21,19 @@ export default function UserRecipe() {
     <ScrollView>
       <Text style={styles.fontTitle}>My Recipe</Text>
       <SectionUserRecipe data={data} />
+      <View style={styles.paginationGroup}>
+        <TouchableOpacity 
+          onPress={() => setCurrentPage(currentPage - 1)}
+          style={currentPage <= 1 && styles.lessNone}
+        >
+          <Ionicons size={30} name="arrow-back-circle"/>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          onPress={() => setCurrentPage(currentPage + 1)}
+        >
+          <Ionicons size={30} name="arrow-forward-circle"/>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   )
 }

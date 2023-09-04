@@ -15,12 +15,14 @@ const storageOptions = {
 }
 
 const sortByOptions = [
+  {label: 'none', value: ''},
   {label: 'title', value: 'title'},
   {label: 'ingredients', value: 'ingredients'},
   {label: 'user_name', value: 'user_name'}
 ];
 
 const sortOptions = [
+  {label: 'none', value: ''},
   {label: 'A-Z', value: 'asc'},
   {label: 'Z-A', value: 'desc'}
 ];
