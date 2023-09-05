@@ -1,8 +1,9 @@
 import axios from "axios";
 import {BASE_URL} from '@env';
-import {instanceServe, instanceUrl} from '../config/InitState'
+import {instanceServe, instanceUrl} from '../config/InitState';
 
-export const getAllRecipeAction = (page = 1, limit = 5) => async (dispatch) => {
+export const getAllRecipeAction = (page = 1, limit = 5) => 
+    async (dispatch) => {
         try {
             dispatch({type: 'GET_RECIPES_PENDING'})
             const result = await axios.get(`${BASE_URL}/recipe/main?page=${page}&limit=${limit}`)
@@ -14,7 +15,8 @@ export const getAllRecipeAction = (page = 1, limit = 5) => async (dispatch) => {
         }
     }
 
-export const getUserRecipeAction = (user = '', offset = 1) => async (dispatch) => {
+export const getUserRecipeAction = (user = '', offset = 1) => 
+    async (dispatch) => {
         try {
             dispatch({type: 'USER_RECIPES_PENDING'})
             const result = await instanceServe.get(`${BASE_URL}/recipe/user?user_name=${user}&page=${offset}&limit=5`)
@@ -26,10 +28,11 @@ export const getUserRecipeAction = (user = '', offset = 1) => async (dispatch) =
         }
     }
 
-export const getRecipeAction = (id) => async (dispatch) => {
+export const getRecipeAction = (id) => 
+    async (dispatch) => {
         try {
             dispatch({type: 'GET_RECIPE_PENDING'})
-            const result = await instanceServe.get(`${BASE_URL}/recipe/${id}/detail`)
+            const result = await instanceUrl.get(`${BASE_URL}/recipe/${id}/detail`)
             dispatch({payload: result.data.data, type: 'GET_RECIPE_SUCCESS'})
             return result.data.data;
         } catch (error) {
@@ -38,7 +41,8 @@ export const getRecipeAction = (id) => async (dispatch) => {
         }
     }
 
-export const searchRecipeAction = (data) => async (dispatch) => {
+export const searchRecipeAction = (data) => 
+    async (dispatch) => {
         try {
             dispatch({type: 'GET_RECIPES_PENDING'})
             const result = await instanceServe.get(`${BASE_URL}/recipe?search=${data}`)
@@ -50,7 +54,8 @@ export const searchRecipeAction = (data) => async (dispatch) => {
         }
     }
 
-export const sortingRecipeAction = (sortBy = '', sort = '') => async (dispatch) => {
+export const sortingRecipeAction = (sortBy = '', sort = '') => 
+    async (dispatch) => {
         try {
             dispatch({type: 'GET_RECIPES_PENDING'})
             const result = await axios.get(`${BASE_URL}/recipe?sortBy=${sortBy}&sort=${sort}`)
@@ -62,7 +67,8 @@ export const sortingRecipeAction = (sortBy = '', sort = '') => async (dispatch) 
         }
     }
 
-export const categorizedRecipeAction = (category = '') => async (dispatch) => {
+export const categorizedRecipeAction = (category = '') => 
+    async (dispatch) => {
         try {
             dispatch({type: 'GET_RECIPES_PENDING'})
             const result = await axios.get(`${BASE_URL}/recipe/category?category=${category}`)
@@ -74,7 +80,8 @@ export const categorizedRecipeAction = (category = '') => async (dispatch) => {
         }
     }
 
-export const postRecipeAction = (data, navigate) => async (dispatch) => {
+export const postRecipeAction = (data, navigate) => 
+    async (dispatch) => {
         try {
             dispatch({type: 'POST_RECIPE_PENDING'})
             const result = await instanceServe.post(`${BASE_URL}/recipe`, data)
@@ -88,7 +95,8 @@ export const postRecipeAction = (data, navigate) => async (dispatch) => {
         }
     }
 
-export const updateRecipeAction = (data, id, navigate) => async (dispatch) => {
+export const updateRecipeAction = (data, id, navigate) => 
+    async (dispatch) => {
         try {
             dispatch({type: 'UPDATE_RECIPE_PENDING'})
             const result = await instanceServe.put(`${BASE_URL}/recipe/${id}`, data)
@@ -102,7 +110,8 @@ export const updateRecipeAction = (data, id, navigate) => async (dispatch) => {
         }
     }
 
-export const deleteRecipeAction = (id, navigate) => async (dispatch) => {
+export const deleteRecipeAction = (id, navigate) => 
+    async (dispatch) => {
         try {
             dispatch({type: 'DELETE_RECIPE_PENDING'})
             const result = await instanceUrl.delete(`${BASE_URL}/recipe/${id}`)

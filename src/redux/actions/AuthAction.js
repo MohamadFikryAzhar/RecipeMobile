@@ -2,7 +2,8 @@ import axios from "axios";
 import {BASE_URL} from '@env';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const loginAction = (data, navigate) => async (dispatch) => { // jangan ditaruh di bawah
+export const loginAction = (data, navigate) => 
+    async (dispatch) => { // jangan ditaruh di bawah
         dispatch({type: 'LOGIN_PENDING'})
         axios.post(`${BASE_URL}/login`, data)
             .then(result => {
@@ -20,7 +21,8 @@ export const loginAction = (data, navigate) => async (dispatch) => { // jangan d
             })
     }
 
-export const registerAction = (data, navigate) => async (dispatch) => {
+export const registerAction = (data, navigate) => 
+    async (dispatch) => {
         dispatch({type: 'REGISTER_PENDING'})
         axios.post(`${BASE_URL}/register`, data)
             .then(result => {
@@ -34,7 +36,8 @@ export const registerAction = (data, navigate) => async (dispatch) => {
             })
     }
 
-export const logoutAction = (navigate) => async (dispatch) => {
+export const logoutAction = (navigate) => 
+    async (dispatch) => {
         dispatch({type: 'LOGOUT_SUCCESS'})
         navigate('Login')
     }
