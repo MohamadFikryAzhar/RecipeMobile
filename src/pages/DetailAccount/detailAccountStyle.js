@@ -4,17 +4,34 @@ const { StyleSheet } = require("react-native");
 
 const styles = StyleSheet.create({
     profilePage: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
+        backgroundColor: ColorMatch.orange,
+        height: 250
     },
     usernameProfile: {
-        marginTop: 200
-    },  
+        marginTop: 170,
+        textAlign: 'center'
+    },
+    iconText: {
+        marginLeft: -80
+    },
     userActionStyle: {
-        marginTop: 100,
-        gap: 10,
-        backgroundColor: ColorMatch.white
+        flexDirection: 'column',
+        gap: 1,
+        marginTop: -40,
+        marginHorizontal: 10,
+        backgroundColor: ColorMatch.white,
+        height: 400,
+        borderRadius: 10,
+    },
+    buttonDetailAccount: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        gap: 100,
+        margin: 20
+    },
+    iconColor: {
+        color: ColorMatch.orange
     }
 })
 

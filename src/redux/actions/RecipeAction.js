@@ -1,6 +1,7 @@
 import axios from "axios";
 import {BASE_URL} from '@env';
 import {instanceServe, instanceUrl} from '../config/InitState';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const getAllRecipeAction = (page = 1, limit = 5) => 
     async (dispatch) => {
@@ -32,7 +33,7 @@ export const getRecipeAction = (id) =>
     async (dispatch) => {
         try {
             dispatch({type: 'GET_RECIPE_PENDING'})
-            const result = await instanceUrl.get(`${BASE_URL}/recipe/${id}/detail`)
+            const result = await instanceServe.get(`${BASE_URL}/recipe/${id}/detail`)
             dispatch({payload: result.data.data, type: 'GET_RECIPE_SUCCESS'})
             return result.data.data;
         } catch (error) {

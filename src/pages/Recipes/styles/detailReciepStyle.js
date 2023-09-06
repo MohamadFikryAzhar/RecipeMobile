@@ -3,22 +3,24 @@ import { ColorMatch } from "../../init/ColorMatch";
 const { StyleSheet } = require("react-native");
 
 const styles = StyleSheet.create({
-    marginMain: {
-        marginHorizontal: 20
-    },
     mainInfo: {
-        marginTop: 180
+        marginTop: 180,
+        marginStart: 20,
+    },
+    imageTop: {
+        height: 300
     },
     titleText: {
         fontSize: 30,
-        color: ColorMatch.white
+        color: ColorMatch.white,
+        fontFamily: 'Poppins-Bold'
     },
     usernameText: {
         fontSize: 16,
         color: ColorMatch.gray
     },
     ingredientGroup: {
-        marginTop: 30,
+        marginTop: -30,
         width: 20000,
         height: 320,
         backgroundColor: ColorMatch.white
@@ -27,12 +29,15 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         fontSize: 18,
-        fontWeight: 'bold',
-        margin: 20
+        margin: 20,
+        fontFamily: 'Poppins-Black'
     },
     ingredientText: {
-        color: ColorMatch.black,
-        margin: 20
+        color: ColorMatch.gray,
+        margin: 20,
+        marginTop: -40,
+        marginLeft: 40,
+        fontFamily: 'Poppins-Bold'
     }
 })
 
