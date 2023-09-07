@@ -10,6 +10,7 @@ import UserRecipe from './src/pages/Recipes/UserRecipe';
 import DetailRecipe from './src/pages/Recipes/DetailRecipe';
 import EditRecipe from './src/pages/Recipes/EditRecipe';
 import SplashScreen from './src/pages/component/SplashScreen';
+import EditUser from './src/pages/EditUser/EditUser';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ function App() {
         <Stack.Screen name="DetailRecipe" component={DetailRecipe} />
         <Stack.Screen name="UserRecipe" component={UserRecipe} />
         <Stack.Screen name="EditRecipe" component={EditRecipe} />
+        <Stack.Screen name="EditProfile" component={EditUser} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
       </Stack.Navigator>

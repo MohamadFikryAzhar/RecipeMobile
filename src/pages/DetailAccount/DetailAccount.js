@@ -3,11 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import styles from './detailAccountStyle';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { logoutAction } from "../../redux/actions/AuthAction";
 
 export default function DetailAccount() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const login = useSelector(state => state.login);
+
+  function logoutUser() {
+    dispatch(logoutAction(navigation.navigate))
+  }
 
   return (
     <ScrollView>
@@ -17,7 +22,7 @@ export default function DetailAccount() {
       </View>
 
       <View style={styles.userActionStyle}>
-        <TouchableOpacity style={styles.buttonDetailAccount} onPress={() => console.log("Edit Profile")}>
+        <TouchableOpacity style={styles.buttonDetailAccount} onPress={() => navigation.push('EditProfile')}>
           <Ionicons name="person-outline" style={styles.iconColor} size={30}/>        
           <Text style={styles.iconText}>Edit Profile</Text>
           <Ionicons name="chevron-forward-outline" style={{marginLeft: 50}} size={30}/>        
@@ -35,6 +40,11 @@ export default function DetailAccount() {
         <TouchableOpacity style={styles.buttonDetailAccount} onPress={() => console.log("Liked Recipe")}>
           <Ionicons name="thumbs-up-outline" style={styles.iconColor} size={30}/>        
           <Text style={styles.iconText}>Liked Recipe</Text>
+          <Ionicons name="chevron-forward-outline" style={{marginLeft: 50}} size={30}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDetailAccount} onPress={logoutUser}>
+          <Ionicons name="person-remove-outline" style={styles.iconColor} size={30}/>        
+          <Text style={styles.iconText}>Log Out</Text>
           <Ionicons name="chevron-forward-outline" style={{marginLeft: 50}} size={30}/>
         </TouchableOpacity>
       </View>

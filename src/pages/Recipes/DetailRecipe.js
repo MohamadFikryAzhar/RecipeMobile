@@ -7,7 +7,7 @@ import styles from "./styles/detailReciepStyle";
 
 export default function DetailRecipe() {
   const route = useRoute();
-  const {id} = route.params;
+  const {id} = route?.params;
   const dispatch = useDispatch();
   const recipe = useSelector(state => state.recipe);
   const {data} = recipe;
@@ -27,7 +27,7 @@ export default function DetailRecipe() {
 
       <View style={styles.ingredientGroup}>
         <Text style={styles.ingredientTitle}>Ingredients</Text>
-        {data.ingredients.split(',').map((ingredient, index) => {
+        {data?.ingredients.split(',').map((ingredient, index) => {
           return (
             <View key={index}>
               <Text style={{marginTop: 1, margin: 20}}>-</Text>
