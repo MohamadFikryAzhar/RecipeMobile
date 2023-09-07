@@ -18,7 +18,7 @@ export default function DetailAccount() {
   return (
     <ScrollView>
       <View style={styles.profilePage}>
-        <ImageBackground source={{uri: data[0].photo}} style={styles.photoProfileStyle}>
+        <ImageBackground source={{uri: data[0].photo ? data[0].photo : ''}} style={styles.photoProfileStyle}>
           <Text style={styles.usernameProfile}>{data[0].name ? data[0].name : ''}</Text>
         </ImageBackground>
       </View>
