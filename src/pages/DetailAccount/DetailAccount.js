@@ -1,4 +1,4 @@
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { ImageBackground, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import styles from './detailAccountStyle';
@@ -8,7 +8,8 @@ import { logoutAction } from "../../redux/actions/AuthAction";
 export default function DetailAccount() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const login = useSelector(state => state.login);
+  const get_user = useSelector(state => state.get_user);
+  const {data} = get_user;
 
   function logoutUser() {
     dispatch(logoutAction(navigation.navigate))
@@ -17,8 +18,9 @@ export default function DetailAccount() {
   return (
     <ScrollView>
       <View style={styles.profilePage}>
-        <Image source={{uri: login.data.photo ? login.data.photo : 'https://i.stack.imgur.com/l60Hf.png'}} />
-        <Text style={styles.usernameProfile}>{login.data.name ? login.data.name : ''}</Text>
+        <ImageBackground source={{uri: data[0].photo}} style={styles.photoProfileStyle}>
+          <Text style={styles.usernameProfile}>{data[0].name ? data[0].name : ''}</Text>
+        </ImageBackground>
       </View>
 
       <View style={styles.userActionStyle}>

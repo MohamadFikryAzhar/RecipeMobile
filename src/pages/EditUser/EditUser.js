@@ -51,8 +51,8 @@ const EditUser = () => {
     useEffect(() => {
         if (data) {
             setUserData({
-                name: data.name,
-                photo: data.photo,
+                name: data[0].name,
+                photo: data[0].photo,
             });
         }
     }, [data])
@@ -78,7 +78,6 @@ const EditUser = () => {
         <ScrollView>
             <View style={styles.formAddRecipeStyle}>
                 <Text style={styles.fontTitle}>Edit Your Account</Text>
-                <Image source={{uri: login.data.photo}} />
                 <TextInput inputMode="text" onChangeText={name => onEditUserChange('name', name)} defaultValue={userData?.name} placeholder="Name" style={styles.titleInput} />
                 <View style={styles.uploadGroup}>
                     <TouchableOpacity style={styles.photoInput} onPress={cameraLaunch}>

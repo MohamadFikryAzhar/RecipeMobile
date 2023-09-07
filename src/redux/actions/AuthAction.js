@@ -47,7 +47,7 @@ export const editUserAction = (data, navigate) =>
                 return result.data.data;
             })
             .catch(err => {
-                navigate('Register')
+                navigate('Main')
                 dispatch({type: 'EDIT_USER_FAILED', payload: err.response.data.message})
             })
     }

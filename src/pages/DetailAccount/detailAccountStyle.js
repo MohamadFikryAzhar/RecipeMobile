@@ -5,11 +5,21 @@ const { StyleSheet } = require("react-native");
 const styles = StyleSheet.create({
     profilePage: {
         backgroundColor: ColorMatch.orange,
-        height: 250
+        height: 250,
+    },
+    photoProfileStyle: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 130,
+        marginTop: 60,
+        width: 100,
+        height: 100,
     },
     usernameProfile: {
-        marginTop: 170,
-        textAlign: 'center'
+        marginTop: 70,
+        textAlign: 'center',
+        color: ColorMatch.white
     },
     iconText: {
         marginLeft: -80
