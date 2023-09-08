@@ -39,19 +39,19 @@ export default function HomeScreen() {
           </Text>
           <Image source={require('./../../assets/Group48.jpg')} />
           <Text style={styles.categoryText}>
-            Main
+            Boiled
           </Text>
           <Image source={require('./../../assets/Group49.jpg')} />
           <Text style={styles.categoryText}>
-            Main
+            Seafod
           </Text>
           <Image source={require('./../../assets/Group50.jpg')} />
           <Text style={styles.categoryText}>
-            Main
+            Pop
           </Text>
           <Image source={require('./../../assets/Group47.jpg')} />
           <Text style={styles.categoryText}>
-            Main
+            New
           </Text>
         </View>
       </ScrollView>
@@ -66,7 +66,7 @@ export default function HomeScreen() {
           </View>
           <Image source={require('./../../assets/Rectangle55.jpg')}/>
           <View style={styles.bgNewRecipe}>
-            <Text style={styles.newRecipeTitle}>Beef Steak</Text>
+            <Text style={styles.newRecipeTitle}>Spaghetti</Text>
             <Text style={styles.newRecipeIngredients}>{trimmedIngredient}</Text>
           </View>
         </View>

@@ -72,16 +72,16 @@ const styles = StyleSheet.create({
     gap: -40
   },
   bgNewRecipe: {
-    backgroundColor: ColorMatch.white,
+    backgroundColor: 'transparent',
     left: -120,
     marginTop: 75,
   },
   newRecipeTitle: {
-    color: ColorMatch.black,
+    color: ColorMatch.white,
     fontSize: 20
   },
   newRecipeIngredients: {
-    color: ColorMatch.black,
+    color: ColorMatch.white,
   },
   linkMoreCategory: {
     fontSize: 13,

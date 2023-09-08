@@ -15,12 +15,15 @@ export default function DetailAccount() {
     dispatch(logoutAction(navigation.navigate))
   }
 
+  const photoUri = (data && data[0] && data[0].photo) ? data[0].photo : '';
+  const userName = (data && data[0] && data[0].name) ? data[0].name : '';
+
   return (
     <ScrollView>
       <View style={styles.profilePage}>
-        <ImageBackground source={{uri: data[0].photo ? data[0].photo : ''}} style={styles.photoProfileStyle}>
-          <Text style={styles.usernameProfile}>{data[0].name ? data[0].name : ''}</Text>
-        </ImageBackground>
+      <ImageBackground source={{ uri: photoUri }} style={styles.photoProfileStyle}>
+          <Text style={styles.usernameProfile}>{userName}</Text>        
+      </ImageBackground>
       </View>
 
       <View style={styles.userActionStyle}>
